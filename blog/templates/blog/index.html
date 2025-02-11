@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block title %} Main page {% endblock %}
+{% block content %}
+    <div class="posts">
+        {% for post in page_obj %}
+            <div class="post">
+                <a href="{{post.get_absolute_url}}">
+                    <img class="post__img" src="{{ post.images.all.0.image.url }}" alt="">
+                </a>
+                <div class="post__text">
+                    <div class="post__text__header">Title</div>
+                    <span>{{post.title}}</span>
+                </div>
+                <div class="post__text">
+                    <div class="post__text__header">Body</div>
+                    <span>{{post.body|truncatewords_html:15}}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% include "blog/pagination.html" %}
+    
+{% endblock %}

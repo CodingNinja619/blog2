@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block css %}
+    {% endblock %}
+    <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body>
+    <div class="contain">
+        <div id="header">
+            <div id="logo">
+                <img src="{% static 'logo.png' %}" alt="">
+            </div>
+            <div class="links-search">
+                <ul class="links">
+                    <li><a href="{% url 'blog:post_list' %}">Home</a></li>
+                    <li><a href="">Smth1</a></li>
+                    <li><a href="">Smth2</a></li>
+                </ul>
+                <div class="search">
+                    <form method="get" action="{% url 'blog:post_search' %}">
+                        <input type="search" name="query">
+                    </form>
+                   
+                </div>
+            </div>
+            
+            <div class="profile">
+                <img src="{% static 'profile.webp' %}" alt="">
+            </div>
+        </div>
+        <div id="content">
+        {% block content %}
+        {% endblock %}
+        </div>
+        <div id="sidebar">
+            
+        </div>
+        <div id="footer">
+    
+        </div>
+    </div>
+</body>
+</html>

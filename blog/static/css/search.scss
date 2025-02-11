@@ -1,0 +1,83 @@
+$post-even-background-color: #f4f4f4;
+$post-hover-background-color: #e4e4e4;
+.post-search-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 90%;
+    margin: 10px auto 0;
+    .post {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        
+        padding: 10px;
+
+        border: 1px solid #000;
+        // border-bottom: 0;
+
+        .post__image_title {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+        .post__image {
+            width: 150px;
+            
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        .post__title {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            font-weight: bold;
+            padding: 10px;
+        }
+        &:nth-child(even) {
+            background-color: $post-even-background-color;
+        }
+        &:not(:last-child) {
+            border-bottom: 0;
+        }
+        &:hover {
+            background-color: $post-hover-background-color;
+            cursor: pointer;
+        }
+
+        .post__body {
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .post__image_title {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+
+        .post__image {
+            margin: 0 auto;
+        }
+    }
+}

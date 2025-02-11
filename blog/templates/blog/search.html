@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="post-search-list">
+        {% for post in posts %}
+            <div class="post">
+                <div class="post__image_title">
+                    <div class="post__image">
+                        <img src="{{post.images.all.0.image.url}}" alt="">
+                    </div>
+                    <div class="post__title">
+                        {{post.title}}
+                    </div>
+                </div>
+                
+                <div class="post__body">
+                    {{post.title|truncatewords_html:15}}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
