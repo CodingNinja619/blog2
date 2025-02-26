@@ -1,8 +1,9 @@
 1) main page with all posts and pagination +
-2) post page
-3) searching posts
-4) tags for posts
-5) login and registration
+2) post page +
+3) searching posts +
+4) tags for posts +
+5) login, logout and registration +
+    https://dev.to/amoabakelvin/creating-a-custom-authentication-backend-in-django-17bl
 6) creating of posts with WYSIWYG
 7) commenting on posts
 8) subscriptions on someone's posts (sub to an account)
