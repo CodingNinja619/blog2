@@ -30,8 +30,16 @@
                 </div>
             </div>
             
-            <div class="profile">
+            <!-- <div class="profile">
                 <img src="{% static 'profile.webp' %}" alt="">
+            </div> -->
+
+            <div class="profile">
+                {% if not request.user.username %}
+                    <a href="{% url 'account:login' %}">Log in</a>
+                {% else %}
+                    {{request.user.username}}, <a href="{% url 'account:logout' %}">Log out</a>
+                {% endif %}
             </div>
         </div>
         <div id="content">

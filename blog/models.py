@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django.db.models.signals import post_init
 from faker import Faker
+from taggit.managers import TaggableManager
 
 class User(AbstractUser):
     pass
@@ -28,6 +29,7 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=1000, null=True, blank=True)
+    tags = TaggableManager()
 
     def __str__(self):
         return self.title

@@ -9,3 +9,7 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Image)
 class ImageADmin(admin.ModelAdmin):
     pass
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    pass
