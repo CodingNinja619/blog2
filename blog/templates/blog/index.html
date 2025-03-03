@@ -5,13 +5,12 @@
 {% endblock %}
 {% block title %} Main page {% endblock %}
 {% block content %}
+    {% if tag_name %}
+        <h3>Posts by tag '{{tag_name}}'</h3> 
+    {% endif %}
+    
     <div class="posts">
-        {% if tag_slug %}
-            {% for tag in post.tags.all %}
-                <!-- <a href="{% url 'posts_by_tag' tag.name %}">{{tag.name}}</a> -->
-                {% if not forloop.last %}, {% endif %}
-            {% endfor %}
-        {% endif %}
+
         {% for post in page_obj %}
             <div class="post">
                 <a href="{{post.get_absolute_url}}">
