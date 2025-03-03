@@ -1,7 +1,8 @@
 <div class="pagination">
     <div class="step-links">
     {% if page_obj.has_previous %}
-        <a class="step-link" href="?page={{page_obj.previous_page_number}}"><<</a>
+        <a class="step-link" href="?page={{page_obj.previous_page_number}}">Prev</a>
+        <a class="step-link" href="?page=1"><<</a>
     {% endif %}    
     {% for page in page_obj.elided_page_range %}
         
@@ -14,7 +15,8 @@
         {% endif %}
     {% endfor %}
     {% if page_obj.has_next %}
-            <a class="step-link" href="?page={{page_obj.next_page_number}}">>></a>
+            <a class="step-link" href="?page={{page_obj.next_page_number}}">Next</a>
+            <a class="step-link" href="?page={{page_obj.paginator.num_pages}}">>></a>
     {% endif %}
     </div>
 </div>
