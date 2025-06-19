@@ -1,32 +1,25 @@
+
 {% extends "base.html" %}
 {% load static %}
+
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/posts.css' %}">
+<link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+
 {% endblock %}
 {% block title %} Main page {% endblock %}
 {% block content %}
     {% if tag_name %}
         <h3>Posts by tag '{{tag_name}}'</h3> 
     {% endif %}
-    
-    <div class="posts">
-
-        {% for post in page_obj %}
-            <div class="post">
-                <a href="{{post.get_absolute_url}}">
-                    <img class="post__img" src="{{ post.images.all.0.image.url }}" alt="">
-                </a>
-                <div class="post__text">
-                    <div class="post__text__header">Title</div>
-                    <span>{{post.title}}</span>
-                </div>
-                <div class="post__text">
-                    <div class="post__text__header">Body</div>
-                    <span>{{post.body|truncatewords_html:15}}</span>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+    {% if request.user %}
+        <button class="my-button">
+            <a href="{% url 'blog:create' %}" class="add-post">Add Post</a>
+        </button>
+    {% endif %}
+   
+    {% include "blog/posts.html" %}
 
     {% include "blog/pagination.html" %}
     

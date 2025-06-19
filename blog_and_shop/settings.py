@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # Third-party apps
     'livereload',
     'taggit',
+    'ckeditor',
+    'ckeditor_uploader',
 
     # Default apps
     'django.contrib.admin',
@@ -137,6 +139,7 @@ STATIC_URL = 'static/'
 #     os.path.join(BASE_DIR, "static"),
 # ]
 # STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -148,3 +151,9 @@ AUTH_USER_MODEL = 'blog.User'
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR/'media'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_FILE_GENERATOR = 'blog.utils.get_filename'
+
+# LOGIN_URL = 'account/login'

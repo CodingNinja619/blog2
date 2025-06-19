@@ -2,6 +2,9 @@ $primary-color: #fff;
 $link-color: rgb(34, 34, 253);
 $hover-link-color: rgb(23, 23, 255);
 $sidebar-color: #39393a;
+$dropdown-menu-background-color: #000;
+$dropdown-menu-color: #fff;
+$dropdown-menu-color-hover: #ccc;
 html, body {
     padding: 0;
     margin: 0;
@@ -13,15 +16,15 @@ body {
             box-sizing: border-box;
 }
 .contain {
-    display: grid;
-    grid-template-areas:
-    "header header"
-    "content sidebar"
-    "footer footer";
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     width: 100%;
-    max-width: 1600px;
-    grid-template-columns: 80% 20%;
-    grid-template-rows: auto 1fr auto;
+    max-width: 1650px;
     margin: 0 auto;
     border: 1px solid #000;
     -webkit-box-sizing: border-box;
@@ -86,15 +89,16 @@ body {
     }
 
     .search {
-        margin-right: 15px;
+        margin-right: 10px;
         margin-left: auto;
     }
 
 
 
     .profile {
-        width: 30px;
+        position: relative;
         img {
+            width: 30px;
             max-width: 100%; /* Подстраивается под размер любого контейнера */
             height: auto;
 
@@ -103,14 +107,51 @@ body {
             }
         }
         margin-right: 5px;
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0px;
+            background-color: $dropdown-menu-background-color;
+            padding: 10px 10px 0px 10px;
+            border-radius: 10px;
+            width: 75px;
+            a {
+                color: $dropdown-menu-color;
+                text-decoration: none;
+                margin-bottom: 10px;
+                
+                &:hover {
+                    color: $dropdown-menu-color-hover;
+                }
+            }
+        }
     }
 }
+#content-sidebar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
 #content {
-    min-height: 500px;
-    height: calc(100vh - 100px - 100px);
+    min-height: calc(100vh - 100px - 100px);
     border-bottom: 1px solid #000;
     grid-area: content;
     background-color: $primary-color;
+    padding-left: 10px;
+    width: 80%;
+
+    .my-button {
+        background-color: #7abc83;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        &:hover {
+            cursor: pointer;
+            background: #84cd8e;
+        }
+    }
 }
 #sidebar {
     display: -webkit-box;
@@ -120,6 +161,7 @@ body {
     border-bottom: 1px solid #000;
     grid-area: sidebar;
     background-color: $sidebar-color;
+    width: 20%;
 }
 #footer {
     min-height: 100px;
@@ -127,17 +169,36 @@ body {
     grid-area: footer;
 }
 
-@media screen and (max-width:1000px) {
-    .contain {
-        grid-template-columns: 70% 30%;
+@media screen and (max-width: 1070px) {
+    #content {
+        width: 70%;
+    }
+    #sidebar {
+        width: 30%;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .contain {
-        grid-template-columns: 60% 40%;
+    #content {
+        width: 60%;
+    }
+    #sidebar {
+        width: 40%;
     }
 }
+
+
+// @media screen and (max-width:1000px) {
+//     .contain {
+//         grid-template-columns: 70% 30%;
+//     }
+// }
+
+// @media screen and (max-width: 600px) {
+//     .contain {
+//         grid-template-columns: 60% 40%;
+//     }
+// }
 
 @media screen and (max-width: 480px) {
     .links-search {

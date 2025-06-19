@@ -1,0 +1,27 @@
+$link-color: rgb(34, 34, 253);
+$hover-link-color: rgb(23, 23, 255);
+
+.pagination {
+    text-align: center;
+    margin: 0 auto;
+
+    .step-links {
+        .step-link {
+            text-decoration: none;
+            color: $link-color;
+
+            &:hover { 
+                text-decoration: underline;
+                color: $hover-link-color;
+            }
+
+            &:visited {
+                color: $link-color;
+            }
+        }
+
+        .page-number {
+            margin-right: 10px;
+        }
+    }
+}

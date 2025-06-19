@@ -1,8 +1,8 @@
 <div class="pagination">
     <div class="step-links">
     {% if page_obj.has_previous %}
-        <a class="step-link" href="?page={{page_obj.previous_page_number}}">Prev</a>
         <a class="step-link" href="?page=1"><<</a>
+        <a class="step-link" href="?page={{page_obj.previous_page_number}}">Prev</a>
     {% endif %}    
     {% for page in page_obj.elided_page_range %}
         

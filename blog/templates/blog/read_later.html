@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Read later list {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/posts.css' %}">
+<link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">Read later</h1>
+    {% include "blog/posts.html" %}
+
+    {% include "blog/pagination.html" %}
+
+{% endblock %}

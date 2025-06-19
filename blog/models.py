@@ -9,7 +9,9 @@ from django.utils.text import slugify
 from django.db.models.signals import post_init
 from faker import Faker
 from taggit.managers import TaggableManager
-
+# from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField 
+from django.contrib.auth import get_user_model
 class User(AbstractUser):
     pass
 
@@ -24,12 +26,17 @@ def get_file_path(instance, filename):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    body = models.TextField()
+    # body = models.TextField()
+    body = RichTextUploadingField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=1000, null=True, blank=True)
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
+    read_later_users = models.ManyToManyField(get_user_model(), related_name='read_later_posts')
+
+    class Meta:
+        ordering = ["created"]
 
     def __str__(self):
         return self.title
@@ -51,6 +58,14 @@ class Image(models.Model):
                              default=1, related_name='images')  # foreign key is because
                                                                                                 # later I might want to store multiple images
                                                                                                 # per post
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comments')
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
 
 class PostFactory:
     fake = Faker()
@@ -68,3 +83,4 @@ class PostFactory:
     def create_batch(amount, title=None, body=None, author=None):
         for _ in range(amount):
             PostFactory.create(title, body, author)
+

@@ -1,0 +1,22 @@
+{% load static %}
+ 
+ <div class="posts">
+        {% for post in page_obj %}
+            <div class="post">
+                <a href="{{post.get_absolute_url}}" class="image-container">
+                    <img class="post__img" src="{{ post.images.all.0.image.url }}" alt="">
+                    {% if show_read_later_icon is not False %}
+                    <div class="read-later-button" #id="read-later-button" data-post-id="{{post.id}}"><img src="{% static 'read-later-logo.webp' %}" alt=""></div>
+                    {% endif %}
+                </a>
+                <div class="post__text">
+                    <div class="post__text__header">Title</div>
+                    <span>{{post.title}}</span>
+                </div>
+                <div class="post__text">
+                    <div class="post__text__header">Body</div>
+                    <span>{{post.body|truncatewords_html:15}}</span>
+                </div>
+            </div>
+        {% endfor %}
+</div>

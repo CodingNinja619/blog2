@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script defer>
+        
+        let post_id = $(".child1").data("post-id"); 
+        console.log(post_id);
+        if (!post_id) {
+        let parents = $(this).parents();
+            for (let parent of parents) {
+                if (parent.data("post-id")) {
+                    post_id = $(this).data("post-id");
+                    break;
+                }
+            }
+        }
+        console.log(post_id);
+    </script>
+</head>
+<body>
+    <div class="parents">
+        <div class="child1" data-post-id="1">
+            <div class="child2">
+                <p>AFAFafaf</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

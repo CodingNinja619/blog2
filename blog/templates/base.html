@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block css %}
     {% endblock %}
+    {% block js %}
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous" defer></script>
+        <script src="{% static 'js/base.js' %}" defer></script>
+    {% endblock %}
     <title>{% block title %} {% endblock %}</title>
 </head>
 
@@ -38,17 +45,30 @@
                 {% if not request.user.username %}
                     <a href="{% url 'account:login' %}">Log in</a>
                 {% else %}
-                    {{request.user.username}}, <a href="{% url 'account:logout' %}">Log out</a>
+                    <!-- {{request.user.username}}, <a href="{% url 'account:logout' %}">Log out</a> -->
+                    <div>
+                        <img src="{% static 'profile.webp' %}" id="profile-image">
+                        <div class="dropdown-menu">
+                            <a href="">Profile</a>      
+                            <a href="{% url 'blog:read_later' %}">Read later</a>
+                            <a href="{% url 'account:logout' %}">Log out</a>
+                        </div>
+                    </div> 
+                    
                 {% endif %}
             </div>
         </div>
-        <div id="content">
-        {% block content %}
-        {% endblock %}
+        <div id="content-sidebar">
+            <div id="content">
+            {% block content %}
+            {% endblock %}
+            </div>
+            <div id="sidebar">
+                {% block sidebar %}
+                {% endblock %}
+            </div>
         </div>
-        <div id="sidebar">
-            
-        </div>
+       
         <div id="footer">
     
         </div>

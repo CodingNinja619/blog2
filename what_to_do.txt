@@ -2,9 +2,33 @@
 2) post page +
 3) searching posts +
 4) tags for posts +
-5) login, logout and registration +
+5) login, logout and registration +- (add redirects after the operations)
     https://dev.to/amoabakelvin/creating-a-custom-authentication-backend-in-django-17bl
 6) creating of posts with WYSIWYG
-7) commenting on posts
-8) subscriptions on someone's posts (sub to an account)
-9) read later
+7) commenting on posts +
+    Comment model
+    ModelForm
+    html form
+    url pattern
+    view
+        get post
+        get all comments
+        if POST then
+            check if user's logged in
+            Create form: form = CommentForm(data=request.POST)
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save
+        else
+            create an empty form: form = CommentForm()
+8) read later
+    M2M in Post model to User model
+
+
+        
+9) Create user profiles
+    9.1) subscriptions on someone's posts (sub to an account)
+
+10) Sidebar
+        Add info on the amount of posts

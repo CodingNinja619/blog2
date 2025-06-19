@@ -1,0 +1,18 @@
+.pagination {
+  text-align: center;
+  margin: 0 auto;
+}
+.pagination .step-links .step-link {
+  text-decoration: none;
+  color: rgb(34, 34, 253);
+}
+.pagination .step-links .step-link:hover {
+  text-decoration: underline;
+  color: rgb(23, 23, 255);
+}
+.pagination .step-links .step-link:visited {
+  color: rgb(34, 34, 253);
+}
+.pagination .step-links .page-number {
+  margin-right: 10px;
+}/*# sourceMappingURL=pagination.css.map */

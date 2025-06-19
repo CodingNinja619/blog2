@@ -1,49 +1,66 @@
-@import "base.css";
-.contain {
-  grid-template-columns: 100% 0%;
+#sidebar {
+  width: 0px;
 }
 
 #content {
-  display: grid;
-  grid-template-rows: 100px auto;
-  grid-template-columns: 1fr 3fr;
-  grid-template-areas: "title title" "image body";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#content .messages {
+  opacity: 1;
+  transition: opacity 3s ease-out;
+}
+#content .messages li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none !important;
+  padding: 10px;
+}
+#content .messages li.error {
+  background-color: #e74c3c;
+  color: #fff;
+  border-radius: 10px;
+}
+#content .messages li.success {
+  background-color: #34ca6b;
+  color: #fff;
+  border-radius: 10px;
+}
+#content .fadeout {
+  opacity: 0;
 }
 #content .post-title {
   text-align: center;
-  grid-area: title;
 }
-#content .post-image {
+#content .post-image-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  height: 200px;
+}
+#content .post-image-body .post-image {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 10px;
-  grid-area: image;
+  width: 100px;
+  height: 100px;
 }
-#content .post-image img {
+#content .post-image-body .post-image img {
   max-width: 100%;
   height: auto;
 }
-#content .post-body {
+#content .post-image-body .post-body {
   display: flex;
   background-color: #f6f6f6;
   color: #000000;
   border-radius: 5px;
   margin: 10px 0;
   padding: 15px;
-  grid-area: body;
 }
-
-@media screen and (max-width: 1250px) {
-  #content {
-    grid-template-columns: 4fr 5fr;
-  }
-}
-@media screen and (max-width: 600px) {
-  #content {
-    grid-template-rows: 100px auto auto;
-    grid-template-columns: 1fr;
-    grid-template-areas: "title" "image" "body";
-    padding: 10px;
-  }
+#content .comment-section {
+  margin-right: auto;
 }/*# sourceMappingURL=post_detail.css.map */

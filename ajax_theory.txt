@@ -1,0 +1,43 @@
+GET
+ view
+
+def validate_username(request):
+	username = request.GET.get('username', None)
+	response = {
+		'is_taken': User.objects.filter(username__iexact=username)
+	}
+	
+    return JsonResponse(response)
+
+js ajax
+
+#..
+$.ajax({
+	data: $(this).serialize(), // получаяем данные формы
+	url: "{% url 'validate_username' %}",
+	success: function(response) {
+		...
+	},
+	error: function(response) {
+		...
+	}
+});
+
+POST
+
+
+$(document).ready(function () {
+          // отслеживаем событие отправки формы
+          $('#contactForm').submit(function () {
+			  $.ajax({
+				  data: $(this).serialize(), // получаем данные формы
+				  url: $(this).attr('method'), // GET или POST
+				  success: function(response) {
+					  ...
+				  },
+				  error: function(response) {
+					  
+				  }
+			  });
+		  })
+});

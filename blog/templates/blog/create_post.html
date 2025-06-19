@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %} Create post {% endblock %}
+
+{% block content %}
+    <form method="post">
+        {{form.media}}
+        {{form.as_p}}
+    </form>
+{% endblock %}
