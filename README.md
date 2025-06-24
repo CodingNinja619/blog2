@@ -1,6 +1,6 @@
 My blog app
 
-Index page where you can see all the posts in the blog.
+Index page where you can see all the posts in the blog or search for posts using TrigramSimilarity
 
 Post detail page where you can see one specific post, add comments on this post and add it to read later (if you're logged in)
 
